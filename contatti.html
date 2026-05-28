@@ -56,10 +56,15 @@
               Inserisci i dati e invia. In fase di pubblicazione colleghiamo l’invio al backend.
             </div>
             <div style="height: 12px;"></div>
-            <form class="form" data-contact-form>
+            <form class="form" data-contact-form action="mail.php" method="post">
+              <input type="hidden" name="subject" value="Richiesta dal sito" />
               <div class="field">
                 <label for="name">Nome *</label>
                 <input class="input" id="name" name="name" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="phone">Telefono</label>
+                <input class="input" id="phone" name="phone" autocomplete="tel" inputmode="tel" />
               </div>
               <div class="field">
                 <label for="email">Email *</label>

@@ -8,10 +8,11 @@
     msg.className = `alert ${kind}`;
   };
 
-  form.addEventListener("submit", (e) => {
-    // If the form is hosted with the old PHP endpoint, it can be changed later.
-    // For now: prevent a dead POST during local preview and provide feedback.
+  let busy = false;
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (busy) return;
 
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
@@ -23,8 +24,30 @@
       return;
     }
 
-    show("Messaggio pronto: se pubblichi il sito, colleghiamo l’invio al backend. Intanto puoi chiamarci o scriverci via email.", "success");
-    form.reset();
+    const action = form.getAttribute("action") || "";
+    if (!action) {
+      show("Invio non configurato (manca action).", "error");
+      return;
+    }
+
+    busy = true;
+    show("Invio in corso…", "info");
+
+    try {
+      const res = await fetch(action, { method: "POST", body: data });
+      const text = await res.text();
+
+      if (res.ok) {
+        show("Messaggio inviato correttamente. Ti ricontatteremo al più presto.", "success");
+        form.reset();
+      } else {
+        show(text || "Errore durante l’invio. Riprova più tardi o contattaci via telefono/email.", "error");
+      }
+    } catch {
+      show("Impossibile inviare ora. Riprova più tardi o contattaci via telefono/email.", "error");
+    } finally {
+      busy = false;
+    }
   });
 })();
 

@@ -13,13 +13,90 @@
 
   const feedUrl = gallery.getAttribute("data-gallery-feed");
 
+  const isProbablyFlickrFeed = (url) =>
+    typeof url === "string" && /flickr\.com\/services\/feeds\/photos_public\.gne/i.test(url);
+
+  const loadJsonp = (url) =>
+    new Promise((resolve, reject) => {
+      if (typeof url !== "string" || !url) {
+        reject(new Error("jsonp_url_invalid"));
+        return;
+      }
+
+      const cb = `__jsonp_cb_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+
+      const cleanup = () => {
+        try {
+          delete window[cb];
+        } catch {
+          window[cb] = undefined;
+        }
+        script.remove();
+        clearTimeout(timer);
+      };
+
+      window[cb] = (data) => {
+        cleanup();
+        resolve(data);
+      };
+
+      // Flickr JSONP: serve format=json&jsoncallback=CB (no CORS needed).
+      const u = new URL(url, window.location.href);
+      u.searchParams.set("format", "json");
+      u.searchParams.set("jsoncallback", cb);
+      u.searchParams.delete("nojsoncallback");
+
+      const script = document.createElement("script");
+      script.src = u.toString();
+      script.async = true;
+      script.onerror = () => {
+        cleanup();
+        reject(new Error("jsonp_load_error"));
+      };
+
+      const timer = window.setTimeout(() => {
+        cleanup();
+        reject(new Error("jsonp_timeout"));
+      }, 15000);
+
+      document.head.appendChild(script);
+    });
+
+  const flickrBestGuessLarge = (thumbUrl) => {
+    // Flickr static URLs often end with _m.jpg (small). _b is usually a good large size.
+    // If not present, we just return the original.
+    if (typeof thumbUrl !== "string") return "";
+    return thumbUrl.replace(/_m(\.[a-z0-9]+)$/i, "_b$1");
+  };
+
+  const normalizeFeed = (data) => {
+    // Supported formats:
+    // 1) Existing local JSON: [{ title, src, thumb }]
+    // 2) Flickr public feed JSON: { items: [{ title, media: { m }, ...}] }
+    if (Array.isArray(data)) return data.filter((x) => x && x.src);
+
+    if (data && Array.isArray(data.items)) {
+      return data.items
+        .map((item) => {
+          const thumb = item?.media?.m;
+          const src = flickrBestGuessLarge(thumb);
+          const title = item?.title || "Foto";
+          return thumb ? { title, src: src || thumb, thumb } : null;
+        })
+        .filter(Boolean);
+    }
+
+    return [];
+  };
+
   const renderItems = (data) => {
     gallery.innerHTML = "";
 
     for (const item of data) {
       const el = document.createElement("div");
-      el.className = "gallery__item reveal";
-      el.setAttribute("data-reveal", "");
+      // Items are injected after main.js runs IntersectionObserver on [data-reveal].
+      // So we render them already visible (no reveal animation), otherwise they may stay hidden.
+      el.className = "gallery__item is-visible";
       el.setAttribute("data-gallery-item", "");
       el.setAttribute("tabindex", "0");
       el.setAttribute("role", "button");
@@ -109,11 +186,25 @@
     fetch(feedUrl, { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error("feed_error"))))
       .then((data) => {
-        if (!Array.isArray(data)) return;
-        renderItems(data.filter((x) => x && x.src));
+        const items = normalizeFeed(data);
+        if (!items.length) return;
+        renderItems(items);
         bind();
       })
       .catch(() => {
+        // If it's a Flickr feed, fetch() can be blocked by CORS in the browser.
+        // Flickr supports JSONP, which avoids CORS entirely.
+        if (isProbablyFlickrFeed(feedUrl)) {
+          loadJsonp(feedUrl)
+            .then((data) => {
+              const items = normalizeFeed(data);
+              if (!items.length) return;
+              renderItems(items);
+            })
+            .finally(() => bind());
+          return;
+        }
+
         // fallback to existing markup
         bind();
       });
