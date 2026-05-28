@@ -47,38 +47,39 @@
       <section class="section">
         <div class="container">
           <div class="section__head">
-            <h2 class="h2">Richiedi informazioni</h2>
-            <p class="muted">Campi obbligatori: nome, email, messaggio.</p>
+            <h2 class="h2">Contatti rapidi</h2>
+            <p class="muted">Per un preventivo veloce, chiamaci o scrivici direttamente.</p>
           </div>
 
           <div class="prose">
-            <div class="alert" data-contact-msg aria-live="polite">
-              Inserisci i dati e invia. In fase di pubblicazione colleghiamo l’invio al backend.
+            <div class="cards" style="margin-top: 12px;">
+              <article class="card">
+                <h3 class="card__title">Telefono</h3>
+                <p class="card__text">
+                  <a href="tel:+393207217077"><strong>+39 320 721 7077</strong></a><br />
+                  <span class="muted">Chiamaci per urgenze o sopralluogo.</span>
+                </p>
+              </article>
+              <article class="card">
+                <h3 class="card__title">Email</h3>
+                <p class="card__text">
+                  <a href="mailto:ditta.reccia@tiscali.it"><strong>ditta.reccia@tiscali.it</strong></a><br />
+                  <span class="muted">Allega foto/indirizzo e ti rispondiamo.</span>
+                </p>
+              </article>
+              <article class="card">
+                <h3 class="card__title">WhatsApp</h3>
+                <p class="card__text">
+                  <a
+                    href="https://wa.me/393207217077?text=Ciao%2C%20vorrei%20un%20preventivo%20per%20un%20intervento."
+                    target="_blank"
+                    rel="noreferrer"
+                    ><strong>Scrivi su WhatsApp</strong></a
+                  ><br />
+                  <span class="muted">Risposta rapida con foto e dettagli.</span>
+                </p>
+              </article>
             </div>
-            <div style="height: 12px;"></div>
-            <form class="form" data-contact-form action="mail.php" method="post">
-              <input type="hidden" name="subject" value="Richiesta dal sito" />
-              <div class="field">
-                <label for="name">Nome *</label>
-                <input class="input" id="name" name="name" autocomplete="name" required />
-              </div>
-              <div class="field">
-                <label for="phone">Telefono</label>
-                <input class="input" id="phone" name="phone" autocomplete="tel" inputmode="tel" />
-              </div>
-              <div class="field">
-                <label for="email">Email *</label>
-                <input class="input" id="email" name="email" type="email" autocomplete="email" required />
-              </div>
-              <div class="field form__full">
-                <label for="message">Messaggio *</label>
-                <textarea class="textarea" id="message" name="message" required placeholder="Ciao, avrei bisogno di..."></textarea>
-              </div>
-              <div class="form__full" style="display:flex; gap: 12px; align-items:center; flex-wrap: wrap;">
-                <button class="btn btn-primary" type="submit">Invia richiesta</button>
-                <span class="note">Oppure chiamaci: <a href="tel:+393207217077"><strong>+39 320 721 7077</strong></a></span>
-              </div>
-            </form>
           </div>
         </div>
       </section>
@@ -131,7 +132,6 @@
 
     <button class="scrolltop" type="button" data-scrolltop aria-label="Torna su" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/contact.js"></script>
     <script>
       document.getElementById("year").textContent = String(new Date().getFullYear());
     </script>
