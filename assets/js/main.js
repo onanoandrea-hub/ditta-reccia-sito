@@ -14,15 +14,35 @@
   const menuBtn = document.querySelector("[data-menu-button]");
   const menu = document.querySelector("[data-menu]");
   if (menuBtn && menu) {
-    menuBtn.addEventListener("click", () => {
-      const isOpen = menu.classList.toggle("is-open");
+    const setMenuOpen = (isOpen) => {
+      menu.classList.toggle("is-open", isOpen);
       menuBtn.setAttribute("aria-expanded", String(isOpen));
+      document.body.classList.toggle("menu-open", isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
+    };
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = !menu.classList.contains("is-open");
+      setMenuOpen(isOpen);
     });
     menu.addEventListener("click", (e) => {
       const a = e.target.closest("a");
       if (!a) return;
-      menu.classList.remove("is-open");
-      menuBtn.setAttribute("aria-expanded", "false");
+      setMenuOpen(false);
+    });
+
+    // Close on escape
+    window.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (!menu.classList.contains("is-open")) return;
+      setMenuOpen(false);
+    });
+
+    // Close when tapping outside the menu (mobile overlay)
+    document.addEventListener("click", (e) => {
+      if (!menu.classList.contains("is-open")) return;
+      if (menu.contains(e.target) || menuBtn.contains(e.target)) return;
+      setMenuOpen(false);
     });
   }
 
