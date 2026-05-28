@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Contattaci per preventivi e informazioni. Ditta Reccia Riccardo." />
+    <title>Contatti | Ditta Reccia Riccardo</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+
+    <header class="header" data-header>
+      <div class="container">
+        <nav class="nav" aria-label="Principale">
+          <a class="brand" href="index.html">
+            <span class="brand__title">Ditta Reccia Riccardo</span>
+            <span class="brand__subtitle">Impianti • Sicurezza • Automazioni • Fotovoltaico</span>
+          </a>
+          <button class="menu-toggle" type="button" data-menu-button aria-expanded="false" aria-controls="menu">
+            Menu
+          </button>
+          <div class="menu" id="menu" data-menu>
+            <a href="index.html">Home</a>
+            <a href="servizi.html">Servizi</a>
+            <a href="lavori.html">Lavori</a>
+            <a href="fotovoltaico.html">Fotovoltaico</a>
+            <a href="contatti.html" aria-current="page">Contatti</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenuto">
+      <section class="hero">
+        <div class="container">
+          <div class="kicker"><strong>Contatti</strong> risposta rapida e chiara</div>
+          <h1 class="h1">Parliamo del tuo impianto.</h1>
+          <p class="lead">Compila il form oppure contattaci direttamente via telefono o email.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="tel:+393207217077">Chiama ora</a>
+            <a class="btn btn-ghost" href="mailto:ditta.reccia@tiscali.it">Scrivi email</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Richiedi informazioni</h2>
+            <p class="muted">Campi obbligatori: nome, email, messaggio.</p>
+          </div>
+
+          <div class="prose">
+            <div class="alert" data-contact-msg aria-live="polite">
+              Inserisci i dati e invia. In fase di pubblicazione colleghiamo l’invio al backend.
+            </div>
+            <div style="height: 12px;"></div>
+            <form class="form" data-contact-form>
+              <div class="field">
+                <label for="name">Nome *</label>
+                <input class="input" id="name" name="name" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email *</label>
+                <input class="input" id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field form__full">
+                <label for="message">Messaggio *</label>
+                <textarea class="textarea" id="message" name="message" required placeholder="Ciao, avrei bisogno di..."></textarea>
+              </div>
+              <div class="form__full" style="display:flex; gap: 12px; align-items:center; flex-wrap: wrap;">
+                <button class="btn btn-primary" type="submit">Invia richiesta</button>
+                <span class="note">Oppure chiamaci: <a href="tel:+393207217077"><strong>+39 320 721 7077</strong></a></span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Dove siamo</h2>
+            <p class="muted">Sarroch (CA) – operiamo in tutta la Sardegna.</p>
+          </div>
+          <div class="prose" style="padding:0; overflow:hidden;">
+            <iframe
+              title="Mappa"
+              src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=it&amp;q=via%20scirocco%20porto%20columbu&amp;ie=UTF8&amp;t=&amp;z=15&amp;iwloc=B&amp;output=embed"
+              style="width:100%; height: 420px; border: 0;"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <h3>Ditta Reccia Riccardo</h3>
+            <div class="muted">P. IVA 03084050925</div>
+            <div class="muted">Sede: Via Scirocco 5, Porto Columbu – Sarroch (CA)</div>
+          </div>
+          <div>
+            <h3>Contatti</h3>
+            <a href="tel:+393207217077">+39 320 721 7077</a><br />
+            <a href="mailto:ditta.reccia@tiscali.it">ditta.reccia@tiscali.it</a><br />
+            <a href="contatti.html">Richiedi preventivo</a>
+          </div>
+          <div>
+            <h3>Info</h3>
+            <a href="privacy.html">Privacy policy</a><br />
+            <a href="pagine-amiche.html">Pagine amiche</a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div>© <span id="year"></span> Ditta Reccia Riccardo</div>
+          <div class="muted">Tutti i diritti riservati</div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scrolltop" type="button" data-scrolltop aria-label="Torna su" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/contact.js"></script>
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
+

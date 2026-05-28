@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pagine amiche e partner." />
+    <title>Pagine amiche | Ditta Reccia Riccardo</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+
+    <header class="header" data-header>
+      <div class="container">
+        <nav class="nav" aria-label="Principale">
+          <a class="brand" href="index.html">
+            <span class="brand__title">Ditta Reccia Riccardo</span>
+            <span class="brand__subtitle">Impianti • Sicurezza • Automazioni • Fotovoltaico</span>
+          </a>
+          <button class="menu-toggle" type="button" data-menu-button aria-expanded="false" aria-controls="menu">
+            Menu
+          </button>
+          <div class="menu" id="menu" data-menu>
+            <a href="index.html">Home</a>
+            <a href="servizi.html">Servizi</a>
+            <a href="lavori.html">Lavori</a>
+            <a href="fotovoltaico.html">Fotovoltaico</a>
+            <a href="contatti.html">Contatti</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenuto">
+      <section class="hero">
+        <div class="container">
+          <div class="kicker"><strong>Pagine amiche</strong> realtà che stimiamo</div>
+          <h1 class="h1">Partner e consigliati</h1>
+          <p class="lead">Una selezione di pagine utili/partner (stile coerente col nuovo sito).</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cards">
+            <article class="card reveal" data-reveal>
+              <h3 class="card__title"><a href="http://ilsalvavita.it/" target="_blank" rel="noreferrer">Il salvavita di Mauro Onano</a></h3>
+              <p class="card__text">Visita il sito del progetto.</p>
+            </article>
+            <article class="card reveal" data-reveal>
+              <h3 class="card__title"><a href="http://www.kodokanassemini.it/" target="_blank" rel="noreferrer">Kodokan Judo Club Assemini</a></h3>
+              <p class="card__text">Scopri attività e informazioni.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <h3>Ditta Reccia Riccardo</h3>
+            <div class="muted">P. IVA 03084050925</div>
+            <div class="muted">Sede: Via Scirocco 5, Porto Columbu – Sarroch (CA)</div>
+          </div>
+          <div>
+            <h3>Contatti</h3>
+            <a href="tel:+393207217077">+39 320 721 7077</a><br />
+            <a href="mailto:ditta.reccia@tiscali.it">ditta.reccia@tiscali.it</a><br />
+            <a href="contatti.html">Richiedi preventivo</a>
+          </div>
+          <div>
+            <h3>Info</h3>
+            <a href="privacy.html">Privacy policy</a><br />
+            <a href="pagine-amiche.html" aria-current="page">Pagine amiche</a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div>© <span id="year"></span> Ditta Reccia Riccardo</div>
+          <div class="muted">Tutti i diritti riservati</div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scrolltop" type="button" data-scrolltop aria-label="Torna su" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
+

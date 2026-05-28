@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Servizi: impianti elettrici, antintrusione, videosorveglianza, automazioni, reti e fotovoltaico." />
+    <title>Servizi | Ditta Reccia Riccardo</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+
+    <header class="header" data-header>
+      <div class="container">
+        <nav class="nav" aria-label="Principale">
+          <a class="brand" href="index.html">
+            <span class="brand__title">Ditta Reccia Riccardo</span>
+            <span class="brand__subtitle">Impianti • Sicurezza • Automazioni • Fotovoltaico</span>
+          </a>
+          <button class="menu-toggle" type="button" data-menu-button aria-expanded="false" aria-controls="menu">
+            Menu
+          </button>
+          <div class="menu" id="menu" data-menu>
+            <a href="index.html">Home</a>
+            <a href="servizi.html" aria-current="page">Servizi</a>
+            <a href="lavori.html">Lavori</a>
+            <a href="fotovoltaico.html">Fotovoltaico</a>
+            <a href="contatti.html">Contatti</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenuto">
+      <section class="hero">
+        <div class="container">
+          <div class="kicker"><strong>Servizi</strong> completi, dall’idea alla consegna</div>
+          <h1 class="h1">Soluzioni pulite, moderne, affidabili.</h1>
+          <p class="lead">Scegli il servizio, raccontaci l’esigenza: ti guidiamo verso la soluzione più adatta.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cards">
+            <article class="card reveal" data-reveal>
+              <h3 class="card__title">Impianti elettrici civili e industriali</h3>
+              <p class="card__text">Nuove installazioni, manutenzioni, adeguamenti e ampliamenti.</p>
+            </article>
+            <article class="card reveal" data-reveal>
+              <h3 class="card__title">Antintrusione (filare e wireless)</h3>
+              <p class="card__text">Sistemi avanzati con controllo da remoto e configurazioni su misura.</p>
+            </article>
+            <article class="card reveal" data-reveal>
+              <h3 class="card__title">Videosorveglianza</h3>
+              <p class="card__text">Visualizzazione remota, IP cam, soluzioni per privati e aziende.</p>
+            </article>
+            <article class="card reveal" data-reveal>
+              <h3 class="card__title">Rilevazione e allarme incendio</h3>
+              <p class="card__text">Sistemi affidabili e scalabili con componenti certificati.</p>
+            </article>
+            <article class="card reveal" data-reveal>
+              <h3 class="card__title">Automazioni</h3>
+              <p class="card__text">Cancelli, accessi, integrazioni, sicurezza e comodità.</p>
+            </article>
+            <article class="card reveal" data-reveal>
+              <h3 class="card__title">Reti e impianti speciali</h3>
+              <p class="card__text">Reti dati, impianti TV/sat, citofonia e videocitofonia.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Hai un’esigenza specifica?</h2>
+            <p class="muted">Raccontaci cosa devi realizzare: rispondiamo rapidamente.</p>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="contatti.html">Contattaci</a>
+            <a class="btn btn-ghost" href="lavori.html">Vedi esempi</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <h3>Ditta Reccia Riccardo</h3>
+            <div class="muted">P. IVA 03084050925</div>
+            <div class="muted">Sede: Via Scirocco 5, Porto Columbu – Sarroch (CA)</div>
+          </div>
+          <div>
+            <h3>Contatti</h3>
+            <a href="tel:+393207217077">+39 320 721 7077</a><br />
+            <a href="mailto:ditta.reccia@tiscali.it">ditta.reccia@tiscali.it</a><br />
+            <a href="contatti.html">Richiedi preventivo</a>
+          </div>
+          <div>
+            <h3>Info</h3>
+            <a href="privacy.html">Privacy policy</a><br />
+            <a href="pagine-amiche.html">Pagine amiche</a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div>© <span id="year"></span> Ditta Reccia Riccardo</div>
+          <div class="muted">Tutti i diritti riservati</div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scrolltop" type="button" data-scrolltop aria-label="Torna su" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
+
