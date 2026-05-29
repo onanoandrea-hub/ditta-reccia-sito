@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Pagine amiche e partner." />
-    <title>Pagine amiche | Ditta Reccia Riccardo</title>
+    <meta name="description" content="I nostri clienti: referenze e collaborazioni. Ditta Reccia Riccardo." />
+    <title>I nostri clienti | Ditta Reccia Riccardo</title>
     <link rel="icon" href="assets/img/banner.jpg" type="image/jpeg" />
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
@@ -26,7 +26,7 @@
             <a href="servizi.html">Servizi</a>
             <a href="lavori.html">Lavori</a>
             <a href="fotovoltaico.html">Fotovoltaico</a>
-            <a href="clienti.html">I nostri clienti</a>
+            <a href="clienti.html" aria-current="page">I nostri clienti</a>
             <a href="contatti.html">Contatti</a>
           </div>
         </nav>
@@ -36,27 +36,41 @@
     <main id="contenuto">
       <section class="hero">
         <div class="container">
-          <div class="kicker"><strong>Pagine amiche</strong> realtà che stimiamo</div>
-          <h1 class="h1">Partner e consigliati</h1>
-          <p class="lead">Una selezione di pagine utili/partner (stile coerente col nuovo sito).</p>
+          <div class="kicker"><strong>Clienti</strong> referenze e collaborazioni</div>
+          <h1 class="h1">I nostri clienti</h1>
+          <p class="lead">Una selezione di realtà con cui abbiamo lavorato.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="container">
-          <div class="cards">
-            <article class="card reveal" data-reveal>
-              <h3 class="card__title"><a href="http://ilsalvavita.it/" target="_blank" rel="noreferrer">Il salvavita di Mauro Onano</a></h3>
-              <p class="card__text">Visita il sito del progetto.</p>
-            </article>
-            <article class="card reveal" data-reveal>
-              <h3 class="card__title"><a href="http://www.kodokanassemini.it/" target="_blank" rel="noreferrer">Kodokan Judo Club Assemini</a></h3>
-              <p class="card__text">Scopri attività e informazioni.</p>
-            </article>
+          <div class="section__head">
+            <h2 class="h2">Galleria</h2>
+            <p class="muted">Alcune realtà con cui abbiamo collaborato.</p>
+          </div>
+
+          <div
+            class="gallery"
+            data-gallery
+            data-gallery-feed="api/photos.php?category=clienti">
           </div>
         </div>
       </section>
     </main>
+
+    <div class="lightbox" data-lightbox aria-hidden="true">
+      <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Immagine">
+        <img class="lightbox__img" data-lightbox-img alt="" />
+        <div class="lightbox__bar">
+          <div class="lightbox__title" data-lightbox-title>Foto</div>
+          <div style="display:flex; gap: 8px; align-items:center;">
+            <button class="icon-btn" type="button" data-lightbox-prev aria-label="Precedente">←</button>
+            <button class="icon-btn" type="button" data-lightbox-next aria-label="Successiva">→</button>
+            <button class="icon-btn" type="button" data-lightbox-close aria-label="Chiudi">Chiudi</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer class="footer">
       <div class="container">
@@ -76,7 +90,7 @@
           <div>
             <h3>Info</h3>
             <a href="privacy.html">Privacy policy</a><br />
-            <a href="pagine-amiche.html" aria-current="page">Pagine amiche</a>
+            <a href="pagine-amiche.html">Pagine amiche</a>
           </div>
         </div>
         <div class="footer__bottom">
@@ -101,9 +115,9 @@
       </svg>
     </a>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/gallery.js"></script>
     <script>
       document.getElementById("year").textContent = String(new Date().getFullYear());
     </script>
   </body>
 </html>
-
